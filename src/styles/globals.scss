@@ -1,0 +1,113 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --text-color: rgb(36, 36, 36);
+  --background: rgb(233, 231, 231);
+}
+
+body {
+  color: var(--text-color);
+  background: var(--background);
+}
+
+.navbar {
+  .nav-link {
+    font-weight: 700;
+    color: rgba(0, 0, 0, 1);
+    transition: all .2s ease-in-out;
+    &:not(.active) { font-weight: 300; color: rgba(36, 36, 36, .6); }
+    &:hover:not(.active) { color: rgba(36, 36, 36, 1); }
+  }
+}
+
+.btn {
+  background-color: rgb(36, 36, 36);
+  color: rgb(255, 255, 255);
+  font-weight: 700;
+  padding: .5rem 2rem;
+  border-radius: .5rem;
+  border: 2px solid rgba(36, 36, 36, .1);
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
+  transition: all .2s ease-in-out;
+  &:hover { background-color: rgba(36, 36, 36, .8) }
+
+  &-outline {
+    color: rgb(36, 36, 36);
+    background-color: rgba(255, 255, 255, .1);
+    border-color: var(--text-color);
+    &:hover { background-color: rgba(36, 36, 36, .1); }
+  }
+}
+
+.hero {
+  h1 {
+    font-size: 4rem;
+    line-height: 1;
+  }
+}
+
+.more-content {
+  h3 {
+    font-size: 1.5rem;
+    line-height: 1.5;
+    padding-top: 1.5rem;
+    position: relative;
+
+    &::after {
+      content: "";
+      display: block;
+      width: 3rem;
+      height: .2rem;
+      background-color: rgb(36, 36, 36);
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+  }
+}
+
+.dark-intro {
+  background-color: rgb(36, 36, 36);
+  color: rgb(255, 255, 255);
+
+  .content {
+    h2 { font-size: 2.75rem; line-height: 1.2; padding-right: 6rem; }
+    h4 { font-size: 1.25rem; margin-bottom: 1rem; }
+    p { text-align: justify; }
+  }
+
+  .image {
+    max-width: 100%;
+    display: block;
+  }
+}
+
+.testimonials {
+  h2 {
+    font-size: 3.5rem;
+    line-height: 1.2;
+    text-align: center;
+  }
+}
+
+.page-footer {
+  background-color: rgb(196, 196, 196);
+
+  h2 {
+    font-size: 2.75rem;
+    line-height: 1.2;
+    padding-right: 2rem;
+  }
+
+  h3 { font-size: 1.25rem; margin-bottom: 1.5rem; }
+
+  a {
+    transition: all .2s ease-in-out;
+    &:hover { color: rgba(36, 36, 36, .5); }
+  }
+}

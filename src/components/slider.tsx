@@ -1,13 +1,8 @@
 /* eslint-disable @next/next/no-img-element */
-import axios from 'axios'
-import Slider from "react-slick";
+import { useState, useEffect } from 'react'
+import Slider from "react-slick"
 import { Roboto_Condensed } from 'next/font/google'
 const robotoCondensed = Roboto_Condensed({ weight: '700', subsets: ['latin'] })
-
-const getData = async () => {
-  const response = await axios.get("https://64796bb8a455e257fa632e2a.mockapi.io/api/v1/testimonials");
-  return response.data;
-}
 
 function NextArrow(props: any) {
   const { onClick } = props;
@@ -34,7 +29,6 @@ function PrevArrow(props: any) {
 }
 
 const SimpleSlider = () => {
-    
   const settings = {
     dots: false,
     infinite: true,
@@ -45,50 +39,32 @@ const SimpleSlider = () => {
     nextArrow: <NextArrow />
   };
 
+  const [testimonials, setTestimonials] = useState();
+
+  useEffect(() => {
+    const fetchTestimonials = async () => {
+      try {
+        const response = await fetch('https://64796bb8a455e257fa632e2a.mockapi.io/api/v1/testimonials');
+        const data = await response.json();
+        setTestimonials(data);
+      } catch (error) {
+        console.error('Error fetching testimonials:', error);
+      }
+    }
+    fetchTestimonials();
+  });
+
   return (
     <Slider {...settings}>
-      <div className="slider-item">
-        <div>
-          <img className="avatar" alt="" src="" />
-          <h4 className={robotoCondensed.className}>Customer Name</h4>
-          <div className="description">Repudiandae laboriosam ea doloremque nostrum delectus suscipit. Iusto earum qui similique fuga. Consequuntur veritatis vero voluptatem debitis porro totam ipsum reprehenderit inventore. Dolorum corporis dolores a tempore sed ipsam dolor unde occaecati. Soluta corrupti id aut voluptatibus.</div>
+      { testimonials.map((testimonial: any) => (
+        <div className="slider-item" key={testimonial.id}>
+          <div>
+            <img className="avatar" alt={testimonial.name} src={testimonial.avatar} />
+            <h4 className={robotoCondensed.className}>{testimonial.name}</h4>
+            <div className="description">{testimonial.description}</div>
+          </div>
         </div>
-      </div>
-      <div className="slider-item">
-        <div>
-          <img className="avatar" alt="" src="" />
-          <h4 className={robotoCondensed.className}>Customer Name</h4>
-          <div className="description">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do ei usmod tempor incid idunt ut labore et dolore magna aliqua.</div>
-        </div>
-      </div>
-      <div className="slider-item">
-        <div>
-          <img className="avatar" alt="" src="" />
-          <h4 className={robotoCondensed.className}>Customer Name</h4>
-          <div className="description">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do ei usmod tempor incid idunt.</div>
-        </div>
-      </div>
-      <div className="slider-item">
-        <div>
-          <img className="avatar" alt="" src="" />
-          <h4 className={robotoCondensed.className}>Customer Name</h4>
-          <div className="description">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do ei usmod tempor incid idunt ut labore et dolore magna aliqua.</div>
-        </div>
-      </div>
-      <div className="slider-item">
-        <div>
-          <img className="avatar" alt="" src="" />
-          <h4 className={robotoCondensed.className}>Customer Name</h4>
-          <div className="description">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do ei usmod tempor incid idunt ut labore et dolore magna aliqua.</div>
-        </div>
-      </div>
-      <div className="slider-item">
-        <div>
-          <img className="avatar" alt="" src="" />
-          <h4 className={robotoCondensed.className}>Customer Name</h4>
-          <div className="description">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do ei usmod tempor incid idunt ut labore et dolore magna aliqua.</div>
-        </div>
-      </div>
+      ))}
     </Slider>
   );
 };

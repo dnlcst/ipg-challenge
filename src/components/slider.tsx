@@ -39,7 +39,7 @@ const SimpleSlider = () => {
     nextArrow: <NextArrow />
   };
 
-  const [testimonials, setTestimonials] = useState();
+  const [testimonials, setTestimonials] = useState([]);
 
   useEffect(() => {
     const fetchTestimonials = async () => {

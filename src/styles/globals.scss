@@ -13,6 +13,7 @@ body {
 }
 
 .navbar {
+  @media screen and (min-width: 600px) { li:last-child { display: none; } }
   .nav-link {
     font-weight: 700;
     color: rgba(0, 0, 0, 1);
@@ -44,17 +45,29 @@ body {
   }
 }
 
+.btn-contact {
+  display: none;
+  @media screen and (min-width: 600px) { display: inline-flex; }
+}
+
 .hero {
-  h1 {
-    font-size: 4rem;
-    line-height: 1;
+  .title {
+    font-size: calc(32px + 0.390625vw);
+    line-height: 1.2;
+    @media screen and (min-width: 768px) { font-size: calc(36px + 0.390625vw) }
+    @media screen and (min-width: 992px) { font-size: calc(48px + 0.390625vw) }
+    @media screen and (min-width: 1280px) { font-size: calc(58px + 0.390625vw) }
+  }
+  .hero-image {
+    max-height: 450px;
+    img { height: 100%; object-fit: cover; }
   }
 }
 
 .more-content {
-  h3 {
-    font-size: 1.5rem;
-    line-height: 1.5;
+  .title {
+    font-size: calc(20px + 0.390625vw);
+    line-height: 1.2;
     padding-top: 1.5rem;
     position: relative;
 
@@ -76,21 +89,33 @@ body {
   color: rgb(255, 255, 255);
 
   .content {
-    h2 { font-size: 2.75rem; line-height: 1.2; padding-right: 6rem; }
-    h4 { font-size: 1.25rem; margin-bottom: 1rem; }
+    .title {
+      font-size: calc(32px + 0.390625vw);
+      line-height: 1.2;
+      @media screen and (min-width: 992px) {
+        font-size: calc(48px + 0.390625vw);
+        padding-right: 6rem;
+      }
+    }
+    .subtitle {
+      font-size: calc(18px + 0.390625vw);
+      margin-bottom: 1rem;
+    }
     p { text-align: justify; }
   }
 
   .image {
-    max-width: 100%;
-    display: block;
+    max-height: 700px;
+    img { height: 100%; object-fit: cover; }
   }
 }
 
 .testimonials {
   overflow: hidden;
-  h2 {
-    font-size: 3.5rem;
+  .title {
+    font-size: calc(32px + 0.390625vw);
+    @media screen and (min-width: 600px) { font-size: calc(42px + 0.390625vw) }
+    @media screen and (min-width: 992px) { font-size: calc(52px + 0.390625vw) }
     line-height: 1.2;
     text-align: center;
   }
@@ -151,13 +176,15 @@ body {
 .page-footer {
   background-color: rgb(196, 196, 196);
 
-  h2 {
+  .title {
     font-size: 2.75rem;
+    font-size: calc(32px + 0.390625vw);
+    @media screen and (min-width: 600px) { font-size: calc(32px + 0.390625vw); }
+    @media screen and (min-width: 992px) { font-size: calc(42px + 0.390625vw); }
     line-height: 1.2;
-    padding-right: 2rem;
   }
 
-  h3 { font-size: 1.25rem; margin-bottom: 1.5rem; }
+  .subtitle { font-size: 1.25rem; margin-bottom: 1.5rem; }
 
   a {
     transition: all .2s ease-in-out;
